@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginBottom: theme.spacing(0.5),
+    fontWeight: 800,
   },
   form: {
     marginTop: theme.spacing(4),

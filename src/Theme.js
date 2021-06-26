@@ -4,6 +4,22 @@ import React from "react";
 
 const Theme = ({ children }) => {
   const theme = createMuiTheme({
+    typography: {
+      fontFamily: [
+        "Raleway",
+        "sans-serif",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        '"Segoe UI"',
+        "Roboto",
+        '"Helvetica Neue"',
+        "Arial",
+        "sans-serif",
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(","),
+    },
     palette: {
       primary: {
         main: "rgba(130, 109, 255, 1)",
