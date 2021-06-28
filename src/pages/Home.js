@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <Box>
       home{" "}
-      <h1>Greetings, mermaid!</h1>
+      <h1>Wazzap</h1>
       <Link to="/login">
         <Button color="primary" variant="contained">
           Mark as paid
