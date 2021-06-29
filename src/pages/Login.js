@@ -16,14 +16,17 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
     justifyContent: "center",
     alignItems: "center",
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up("md")]: {
       display: "flex",
     },
+  },
+  hero: {
+    width: "35vw",
   },
   wrapper: {
     display: "flex",
     justifyContent: "center",
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up("md")]: {
       justifyContent: "start",
       width: "100vw",
     },
@@ -32,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "flex",
       justifyContent: "center",
+    },
+    [theme.breakpoints.up("md")]: {
+      padding: theme.spacing(3),
     },
   },
   content: {
@@ -50,16 +56,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    marginBottom: theme.spacing(0.5),
+    paddingBottom: theme.spacing(0.5),
     fontWeight: 800,
     fontSize: 30,
-    [theme.breakpoints.up("sm")]: {
-      fontSize: 36,
+    [theme.breakpoints.up("md")]: {
+      fontSize: 40,
     },
   },
   caption: {
+    color: "#939393",
+    fontWeight: 400,
     fontSize: 12,
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       fontSize: 18,
     },
   },
@@ -69,25 +77,29 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     marginBottom: theme.spacing(2),
     "& .MuiFormLabel-root.Mui-focused": {
-      color: "red",
+      fontWeight: 500,
+      fontSize: 18,
     },
     "& .MuiInputBase-root": {
-      borderRadius: 100,
+      borderRadius: 15,
+    },
+    "& .MuiOutlinedInput-input": {
+      fontWeight: 500,
     },
     "& .MuiInputBase-root.Mui-focused": {
-      boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+      boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.3rem`,
       borderColor: theme.palette.primary.main,
     },
   },
   wideButton: {
     height: theme.spacing(6),
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     fontWeight: 700,
     fontSize: 18,
     [theme.breakpoints.up("sm")]: {
       height: theme.spacing(8),
-      fontSize: 24,
+      fontSize: 20,
     },
   },
   registerLinks: {
@@ -95,12 +107,27 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
+  linkText: {
+    fontWeight: 400,
+    paddingTop: theme.spacing(0.5),
+    fontSize: 14,
+    [theme.breakpoints.up("md")]: {
+      fontSize: 16,
+      paddingTop: theme.spacing(1),
+    },
+  },
   link: {
-    marginBottom: theme.spacing(1),
+    fontWeight: 700,
+    color: theme.palette.primary.main,
+    textDecoration: "none",
+    fontSize: 14,
+    [theme.breakpoints.up("md")]: {
+      fontSize: 16,
+    },
   },
   remember: {
-    fontSize: 12,
     fontWeight: 500,
+    fontSize: 12,
     [theme.breakpoints.up("sm")]: {
       fontSize: 18,
     },
@@ -117,10 +144,8 @@ const Login = () => {
       </Grid>
       <Grid item xs={12} md={6} className={classes.contentWrapper}>
         <div className={classes.content}>
-          <Typography variant="h4" className={classes.title}>
-            Log in to invoice
-          </Typography>
-          <Typography variant="caption">
+          <Typography className={classes.title}>Log in to invoice</Typography>
+          <Typography className={classes.caption}>
             Glad to have you back! Please log in to your account.
           </Typography>
 
@@ -144,7 +169,7 @@ const Login = () => {
             <FormControlLabel
               control={<Checkbox name="rememberme" color="primary" />}
               label="Remember Me"
-              classname={classes.remember}
+              className={classes.remember}
             />
           </form>
 
@@ -161,12 +186,14 @@ const Login = () => {
           </Link>
 
           <div className={classes.registerLinks}>
-            <Typography className={classes.link}>
-              <Link to="#">Forgot Password</Link>
-            </Typography>
-            <Typography>
+            <Link to="#" className={classes.link}>
+              Forgot Password
+            </Link>
+            <Typography className={classes.linkText}>
               Haven't joined yet?
-              <Link to="#">Register now!</Link>
+              <Link to="#" className={classes.link}>
+                Register now!
+              </Link>
             </Typography>
           </div>
         </div>
