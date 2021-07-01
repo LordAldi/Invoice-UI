@@ -10,6 +10,7 @@ import {
   fade,
 } from "@material-ui/core";
 import HeroImg from "../assets/img/hero-login.png";
+
 const useStyles = makeStyles((theme) => ({
   heroWrapper: {
     backgroundColor: theme.palette.primary.main,
