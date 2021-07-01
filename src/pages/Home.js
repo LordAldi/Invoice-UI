@@ -12,30 +12,82 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
+import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     display: "flex",
     flexDirection: "column",
-    padding: "24px",
+    padding: theme.spacing(3),
   },
   head: {
+    // display: "grid",
     display: "flex",
     flexDirection: "row",
+    flexWrap: "nowrap",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   title: {
     fontWeight: 800,
     fontSize: 20,
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 28,
+    },
   },
   dropdownWrapper: {
-    justifyContent: "flex-end",
+    textDecoration: "none",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "nowrap",
     alignItems: "center",
   },
-  dropdown: {
-    textDecoration: "none",
+  dropdownText: {
     fontWeight: 600,
     fontSize: 12,
     color: "black",
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 14,
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: 16,
+    },
+  },
+  iconArrow: {
+    color: theme.palette.primary.main,
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 35,
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: 40,
+    },
+  },
+  linkNew: {
+    textDecoration: "none",
+    gridArea: "1 / col6-start / row1-end / 6",
+  },
+  btnNew: {
+    textTransform: "unset",
+    padding: theme.spacing(1),
+  },
+  iconNew: {
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 30,
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: 40,
+    },
+  },
+  btnText: {
+    fontWeight: 500,
+    fontSize: 12,
+    paddingLeft: theme.spacing(1),
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 14,
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: 16,
+    },
   },
 }));
 
@@ -73,15 +125,15 @@ const Home = () => {
     <div className={classes.wrapper}>
       <div className={classes.head}>
         <Typography className={classes.title}>Invoice Records</Typography>
-        <div className={classes.dropdownWrapper}>
+        <div>
           <Link
             ref={anchorRef}
             aria-haspopup="true"
             onClick={handleToggle}
-            className={classes.dropdown}
+            className={classes.dropdownWrapper}
           >
-            Filter
-            <ExpandMoreRoundedIcon color="primary" />
+            <Typography className={classes.dropdownText}>Filter</Typography>
+            <ExpandMoreRoundedIcon className={classes.iconArrow} />
           </Link>
           <Popper
             open={open}
@@ -115,6 +167,16 @@ const Home = () => {
             )}
           </Popper>
         </div>
+        <Link to="/" className={classes.linkNew}>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.btnNew}
+          >
+            <AddCircleRoundedIcon className={classes.iconNew} />
+            <Typography className={classes.btnText}>New Invoice</Typography>
+          </Button>
+        </Link>
       </div>
     </div>
     /*    <Box>
