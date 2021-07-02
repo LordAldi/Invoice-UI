@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   contentWrapper: {
+    backgroundColor: theme.palette.background.default,
     [theme.breakpoints.up("sm")]: {
       display: "flex",
       justifyContent: "center",
@@ -57,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
+    color: theme.palette.text.dark,
     paddingBottom: theme.spacing(0.5),
     fontWeight: 800,
     fontSize: 30,
@@ -65,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   caption: {
-    color: "#939393",
+    color: theme.palette.text.secondary,
     fontWeight: 400,
     fontSize: 12,
     [theme.breakpoints.up("md")]: {
@@ -86,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "& .MuiOutlinedInput-input": {
       fontWeight: 500,
+      color: theme.palette.text.dark,
     },
     "& .MuiInputBase-root.Mui-focused": {
       boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.3rem`,
@@ -93,11 +96,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   wideButton: {
-    height: theme.spacing(6),
+    textTransform: "unset",
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(3),
-    fontWeight: 700,
-    fontSize: 18,
     [theme.breakpoints.up("sm")]: {
       height: theme.spacing(8),
       fontSize: 20,
@@ -109,6 +110,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   linkText: {
+    color: theme.palette.text.dark,
     fontWeight: 400,
     paddingTop: theme.spacing(0.5),
     fontSize: 14,
@@ -127,10 +129,25 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   remember: {
+    color: theme.palette.text.dark,
     fontWeight: 500,
     fontSize: 12,
     [theme.breakpoints.up("sm")]: {
       fontSize: 18,
+    },
+  },
+  btnLink: {
+    textDecoration: "none",
+  },
+  btnText: {
+    fontWeight: 700,
+    fontSize: 18,
+    padding: theme.spacing(1),
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 20,
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: 22,
     },
   },
 }));
@@ -174,7 +191,7 @@ const Login = () => {
             />
           </form>
 
-          <Link to="/">
+          <Link to="/" className={classes.btnLink}>
             <Button
               type="submit"
               color="primary"
@@ -182,7 +199,7 @@ const Login = () => {
               fullWidth
               className={classes.wideButton}
             >
-              LogIn
+              <Typography className={classes.btnText}>Login</Typography>
             </Button>
           </Link>
 
@@ -191,7 +208,7 @@ const Login = () => {
               Forgot Password
             </Link>
             <Typography className={classes.linkText}>
-              Haven't joined yet?
+              Haven't joined yet? &nbsp;
               <Link to="#" className={classes.link}>
                 Register now!
               </Link>

@@ -13,24 +13,30 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
+import HeroImg from "../assets/img/hero_empty-state.png";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
+    backgroundColor: theme.palette.background.default,
     display: "flex",
     flexDirection: "column",
     padding: theme.spacing(3),
   },
   head: {
-    // display: "grid",
     display: "flex",
-    flexDirection: "row",
-    flexWrap: "nowrap",
     justifyContent: "space-between",
+    flexWrap: "wrap",
     alignItems: "center",
+    flex: "1 100%",
   },
   title: {
+    flex: "100 0px",
+    color: theme.palette.text.dark,
     fontWeight: 800,
     fontSize: 20,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 16,
+    },
     [theme.breakpoints.up("sm")]: {
       fontSize: 28,
     },
@@ -38,14 +44,17 @@ const useStyles = makeStyles((theme) => ({
   dropdownWrapper: {
     textDecoration: "none",
     display: "flex",
-    flexDirection: "row",
-    flexWrap: "nowrap",
     alignItems: "center",
+    flex: "1 auto",
+    order: 2,
   },
   dropdownText: {
     fontWeight: 600,
     fontSize: 12,
-    color: "black",
+    color: theme.palette.text.dark,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 11,
+    },
     [theme.breakpoints.up("sm")]: {
       fontSize: 14,
     },
@@ -55,6 +64,9 @@ const useStyles = makeStyles((theme) => ({
   },
   iconArrow: {
     color: theme.palette.primary.main,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 20,
+    },
     [theme.breakpoints.up("sm")]: {
       fontSize: 35,
     },
@@ -63,14 +75,23 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   linkNew: {
+    order: 3,
     textDecoration: "none",
-    gridArea: "1 / col6-start / row1-end / 6",
+    flex: "1 auto",
+    paddingLeft: theme.spacing(2),
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: theme.spacing(0.5),
+    },
   },
   btnNew: {
     textTransform: "unset",
     padding: theme.spacing(1),
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(0.5),
+    },
   },
   iconNew: {
+    color: "#F8F7FC",
     [theme.breakpoints.up("sm")]: {
       fontSize: 30,
     },
@@ -79,14 +100,68 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   btnText: {
+    color: "#F8F7FC",
     fontWeight: 500,
     fontSize: 12,
     paddingLeft: theme.spacing(1),
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: theme.spacing(0.5),
+      fontSize: 11,
+    },
     [theme.breakpoints.up("sm")]: {
       fontSize: 14,
     },
     [theme.breakpoints.up("md")]: {
       fontSize: 16,
+    },
+  },
+  content: {
+    height: "60vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    [theme.breakpoints.up("sm")]: {
+      height: "70vh",
+    },
+  },
+  hero: {
+    width: "50vw",
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(6),
+    [theme.breakpoints.up("sm")]: {
+      width: "40vw",
+    },
+    [theme.breakpoints.up("md")]: {
+      marginTop: theme.spacing(6),
+      width: "20vw",
+    },
+  },
+  contentText: {
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+    fontWeight: 400,
+    fontSize: 14,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 12,
+    },
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 18,
+    },
+  },
+  contentLink: {
+    textDecoration: "none",
+    textAlign: "center",
+    color: theme.palette.primary.main,
+    fontWeight: 500,
+    fontSize: 14,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 12,
+    },
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 18,
     },
   },
 }));
@@ -174,8 +249,17 @@ const Home = () => {
             className={classes.btnNew}
           >
             <AddCircleRoundedIcon className={classes.iconNew} />
-            <Typography className={classes.btnText}>New Invoice</Typography>
+            <Typography className={classes.btnText}>New</Typography>
           </Button>
+        </Link>
+      </div>
+      <div className={classes.content}>
+        <img src={HeroImg} className={classes.hero} alt="Invoice" />
+        <Typography className={classes.contentText}>
+          Whoopsie, looks like your invoice record is empty.
+        </Typography>
+        <Link to="/#" className={classes.contentLink}>
+          Add your first invoice now!
         </Link>
       </div>
     </div>
