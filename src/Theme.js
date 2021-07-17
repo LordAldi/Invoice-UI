@@ -25,11 +25,24 @@ const Theme = ({ children }) => {
         main: "rgba(130, 109, 255, 1)",
       },
       secondary: {
+        main: "rgba(111, 111, 111, 1)",
+        bg: "rgba(111, 111, 111, 0.25)",
+      },
+      success: {
+        main: "rgba(64, 151, 83, 1)",
+        bg: "rgba(64, 150, 83, 0.25)",
+      },
+      danger: {
         main: "rgba(236, 106, 44, 1)",
+        bg: "rgba(236, 106, 44, 0.25)",
       },
       background: {
         default: "rgba(248, 247, 252, 1)",
         paper: "rgba(252, 252, 252, 1)",
+      },
+      text: {
+        dark: "rgba(53, 53, 53, 1)",
+        secondary: "rgba(142, 142, 142, 1)",
       },
     },
     overrides: {
